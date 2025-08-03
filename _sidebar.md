@@ -1,12 +1,10 @@
-- 📚 **Vulnerabilities**
-  - [SQL Injection](sql-injection.md)
-  - [XSS (Cross-Site Scripting)](xss.md)
-  - [CSRF (Cross-Site Request Forgery)](csrf.md)
-  - [Insecure File Upload](insecure-file-upload.md)
-  - [SSRF (Server-Side Request Forgery)](ssrf.md)
-  - [Open Redirect](open-redirect.md)
-  - [IDOR (Insecure Direct Object Reference)](idor.md)
-  - [Broken Authentication](broken-auth.md)
-  - [Security Misconfigurations](misconfig.md)
-  - [Command Injection](cmd-injection.md)
+<!-- _sidebar.md -->
+
+- Getting Started
+  - [Home](/README.md)
+- Vulnerabilities 🐞
+  - [Insecure File Upload](/vulns/insecure-file-upload.md)
+  - [SQL Injection](/vulns/sql-injection.md)
+  - [XSS](/vulns/xss.md)
+  - [Spring Boot Actuator](/vulns/spring-boot-actuator.md)
 
