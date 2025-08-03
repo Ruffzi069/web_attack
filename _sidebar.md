@@ -1,5 +1,12 @@
-- [Home](/)
-- [Challenges](challenges.md)
-- [Writeups](writeups.md)
-- [SOC Playbook](soc.md)
+- 📚 **Vulnerabilities**
+  - [SQL Injection](sql-injection.md)
+  - [XSS (Cross-Site Scripting)](xss.md)
+  - [CSRF (Cross-Site Request Forgery)](csrf.md)
+  - [Insecure File Upload](insecure-file-upload.md)
+  - [SSRF (Server-Side Request Forgery)](ssrf.md)
+  - [Open Redirect](open-redirect.md)
+  - [IDOR (Insecure Direct Object Reference)](idor.md)
+  - [Broken Authentication](broken-auth.md)
+  - [Security Misconfigurations](misconfig.md)
+  - [Command Injection](cmd-injection.md)
 
