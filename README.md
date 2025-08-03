@@ -2,7 +2,7 @@
 
 This is your documentation hub for the event. Here you will find:
 
-- 🧠 Challenges & Writeups
+- 🧠 Challenges
 - 🚨 Blue Teaming / SOC
 - 🛡️ Exploits & Tools
 - 📚 Research Notes
