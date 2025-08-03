@@ -1,11 +1,9 @@
-```markdown
-# ☕ Spring Boot Actuator Misconfiguration
+# Spring Boot Actuator Misconfiguration
 
 Spring Boot Actuator is like a **built-in dashboard** for your Spring Boot applications. It provides production-ready features to help monitor and manage your app via HTTP endpoints.
 
----
 
-## 🚀 What is Spring Boot Actuator?
+## What is Spring Boot Actuator?
 
 Actuator provides endpoints to check:
 
@@ -14,7 +12,7 @@ Actuator provides endpoints to check:
 - **Performance** metrics
 - And more...
 
-### 🔍 Common Endpoints:
+### Common Endpoints:
 - `/actuator`
 - `/actuator/health`
 - `/actuator/env`
@@ -22,7 +20,7 @@ Actuator provides endpoints to check:
 
 ---
 
-## ⚠️ Misconfiguration Risk
+## Misconfiguration Risk
 
 If **actuator endpoints are not secured**, they may expose **sensitive data**:
 
@@ -31,27 +29,22 @@ If **actuator endpoints are not secured**, they may expose **sensitive data**:
 - Runtime environment variables
 - Service status
 
-> 🧨 This can lead to **information disclosure**, **recon**, or **post-exploitation** opportunities.
+> This can lead to **information disclosure**, **recon**, or **post-exploitation** opportunities.
 
 ---
 
-## 🔎 How to Find Actuator Exposed Endpoints
+## How to Find Actuator Exposed Endpoints
 
-### 🕵️ Search Engine Dorking
+### Search Engine Dorking
 
 **FOFA:**
-```
 
 body="Whitelabel Error Page"
 
-```
 
 **Shodan:**
-```
 
 http.favicon.hash:"116323821"
-
-```
 
 ---
 
@@ -59,11 +52,9 @@ http.favicon.hash:"116323821"
 
 Try accessing:
 ```
-
 [http://target:8080/actuator](http://target:8080/actuator)
 [http://target:8080/actuator/env](http://target:8080/actuator/env)
 [http://target:8080/actuator/heapdump](http://target:8080/actuator/heapdump)
-
 ```
 
 These can be tested directly in the browser or with tools like curl.
@@ -78,4 +69,3 @@ These can be tested directly in the browser or with tools like curl.
 ---
 
 > 🧠 Always ensure authentication is enforced on sensitive actuator endpoints.
-```
