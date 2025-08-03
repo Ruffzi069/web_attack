@@ -1,4 +1,4 @@
-# 🔐 Welcome to HTB Hacker Docs
+# Welcome to HTB Hacker Docs
 
 This is your documentation hub for the event. Here you will find:
 
