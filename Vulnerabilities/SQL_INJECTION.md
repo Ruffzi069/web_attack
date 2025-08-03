@@ -128,5 +128,5 @@ Even low-level SQLi vulnerabilities (like blind or in cookies) can fetch:
 
 ### 🔹 Real-world Examples:
 
-* [HackerOne Reports – SQLi](https://hackerone.com/hacktivity?filter=type%3Apublic&query=report_type%3A%22vulnerability%20report%22%20sql)
-* [HackerOne Reports – NoSQLi](https://hackerone.com/hacktivity?filter=type%3Apublic&query=nosql)
+* [HackerOne Reports – Union Based SQLi](https://hackerone.com/reports/1046084)
+* [HackerOne Reports – SQLi](https://hackerone.com/reports/1044716)
