@@ -2,14 +2,12 @@
 
 This is your documentation hub for the event. Here you will find:
 
-- 🧠 Challenges
-- 🚨 Blue Teaming / SOC
-- 🛡️ Exploits & Tools
-- 📚 Research Notes
+- [Home](/README.md)
+- [SQL Injection](/Vulnerabilities/SQL_INJECTION.md)
 
 > Stay stealthy, stay sharp.
 
 ---
 
-🔥 Made for HackTheBox community.
+🔥 Made By HackTheBox community.
 
