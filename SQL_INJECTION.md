@@ -1,0 +1,35 @@
+- Basic enumeration or injection for SQL injection is to either manually test with payloads or else using tools such as SQLmap.
+- For the manual testing we can directly use UNION based attacks, ORDER BY attacks, etc. in order to find the database name, table name, column name.
+- For the automated tools we use SQLmap where here are the given steps to enumerate into the database and get the details required.
+	- `--dbs` : Database
+	- `-D [ DATABSE NAME ] --tables` : Tables for the given database
+	- `-D [ DATABASE ] -T [ TABLE ] --dump` : Lists the columns available as well as the data in the tables.
+- **BLIND SQL INJECTION**
+	- In Blind SQL Injection, we can use the given types of attacks to identify whether this vulnerability exists or not.
+		- **SUBSTRING BASED ATTACKS**
+			- You can craft a payload as : `SELECT substring(database(),1,1)` where it gives the first character of the database.
+			- We can try using it in a such a way as well in order to brute force the database name that if the first character is `a` then sleep(10) or else leave. In such way we can get the output.
+			- `SELECT if(substring(database(),1,1)='a',SLEEP(3),'a')`
+			- `SELECT if(substring(database(),1,1)>'g',SLEEP(3),'a')`
+		- **BOOLEAN BASED SQLi**
+			- `' AND 1=1 -- -`
+			- `' AND 1=2 -- -`
+			- Here 1=1 checks the condition to be true where as 1=2 as false thus the web application should respond to that accordingly.
+		- **TIME BASED SQLi**
+			- `SELECT SLEEP(10)`
+			- Here it checks the time after which the web application should respond. Thus if the application responds after 10s then it confirms Blind SQLi
+		- **ERROR BASED SQLi**
+			- ![image.png](../../assets/image_1737020823461_0.png)
+			- Here we are using CASE based statement to test the condition in the database, so if the condition becomes true then it responds back with an empty string but if the response is false then it responds with 'a'
+			- This can let us know about the existence of Blind SQLi.
+		- For much more reference use this link : https://www.db-fiddle.com/f/nLpyQDMd49iRygnY9H7CB8/5
+-
+- **BLIND SQL INJECTION**
+	- For blind sql injection its not necessary that it will be only there in the URL, it can be there in SESSION TOKEN as well, or else Cookies as well.
+	- Like in one of the example of Portswigger lab, the Blind SQL injection was there in `TrackingId`.
+	- More best examples are there at the given link which will give you alot idea.
+- **NO SQL INJECTION**
+	- Its a very unique kind of SQLi where most used is MongoDB.
+	- Well in order to attack for this its a bit logical as well as easy.
+	- You can use the https://www.mongodb.com/ documentation
+	- Other than that the attack vector or parameter is directly where the details are to be entered which is `username` and `password`.
