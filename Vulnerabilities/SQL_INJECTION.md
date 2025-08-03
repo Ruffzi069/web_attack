@@ -1,3 +1,5 @@
+# SQL Injection
+
 - Basic enumeration or injection for SQL injection is to either manually test with payloads or else using tools such as SQLmap.
 - For the manual testing we can directly use UNION based attacks, ORDER BY attacks, etc. in order to find the database name, table name, column name.
 - For the automated tools we use SQLmap where here are the given steps to enumerate into the database and get the details required.
