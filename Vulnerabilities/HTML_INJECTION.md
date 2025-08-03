@@ -1,0 +1,19 @@
+- [[P3]] or [[P4]] as it is a client side vulnerability.
+- Well as the name suggests, HTML injection occurs when the page reflects to any HTML modifications.
+- Lets say changing the tags etc etc.
+- It is a client side attack.
+- The tags which are generally used are :
+	- h1
+	- h2
+	- h3
+	- br
+	- img
+- It is mainly of two types:
+	- **GET BASED**
+		- Getting any information through the server.
+		- Example : Search Bar
+	- **POST BASED**
+		- In post request we send data to the server .
+		- Example : Login Page, Sign In page
+- Thus we can easily get 50-100$ for this bug.
+- This vulnerability can be found overly anywhere where the text is being reflected.

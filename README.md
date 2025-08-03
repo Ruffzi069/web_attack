@@ -4,6 +4,7 @@ This is your documentation hub for the event. Here you will find:
 
 - [Home](/README.md)
 - [SQL Injection](/Vulnerabilities/SQL_INJECTION.md)
+- [HTML Injection](Vulnerabilities/HTML_INJECTION.md)
 
 > Stay stealthy, stay sharp.
 
