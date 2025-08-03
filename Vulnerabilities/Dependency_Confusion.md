@@ -65,4 +65,4 @@ This attack exploits the **trust assumptions** developers make between public an
 ### 📚 References
 
 * 🔗 [HackerOne Report by Alex Birsan](https://hackerone.com/reports/946409)
-* 🔗 [x1337loser GitHub - Dependency Confusion](https://github.com/x1337loser/Dependency-Confusion
+* 🔗 [x1337loser GitHub - Dependency Confusion](https://github.com/x1337loser/Dependency-Confusion)
