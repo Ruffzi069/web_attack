@@ -48,7 +48,7 @@ http.favicon.hash:"116323821"
 
 ---
 
-### 🧪 Manual Scanning
+### Manual Scanning
 
 Try accessing:
 ```
