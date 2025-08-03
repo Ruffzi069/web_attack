@@ -1,7 +1,3 @@
-<!-- _sidebar.md -->
-
-- Getting Started
-  - [Home](/README.md)
 - Vulnerabilities 🐞
   - [Insecure File Upload](/vulns/insecure-file-upload.md)
   - [SQL Injection](/vulns/sql-injection.md)
