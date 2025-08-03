@@ -82,3 +82,9 @@ Look for unsanitized user input reflected in:
 * Error responses
 * Search queries
 
+---
+
+### Reference
+
+* [HTML Injection Simple $500](https://hackerone.com/reports/1581499)
+* [HTML Injection MyCrypto](https://hackerone.com/reports/324548)
