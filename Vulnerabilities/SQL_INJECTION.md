@@ -25,7 +25,7 @@
 			- Here we are using CASE based statement to test the condition in the database, so if the condition becomes true then it responds back with an empty string but if the response is false then it responds with 'a'
 			- This can let us know about the existence of Blind SQLi.
 		- For much more reference use this link : https://www.db-fiddle.com/f/nLpyQDMd49iRygnY9H7CB8/5
--
+
 - **BLIND SQL INJECTION**
 	- For blind sql injection its not necessary that it will be only there in the URL, it can be there in SESSION TOKEN as well, or else Cookies as well.
 	- Like in one of the example of Portswigger lab, the Blind SQL injection was there in `TrackingId`.
