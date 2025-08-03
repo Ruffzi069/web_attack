@@ -1,4 +1,4 @@
-#HTML Injection
+# HTML Injection
 
 - P3 or P4 as it is a client side vulnerability.
 - Well as the name suggests, HTML injection occurs when the page reflects to any HTML modifications.
